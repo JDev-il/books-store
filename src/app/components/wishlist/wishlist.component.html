@@ -20,7 +20,7 @@
       <tr>
         <td>{{ book.title }}</td>
         <td>{{ book.subtitle }}</td>
-        <td>{{ book.description }}</td>
+        <td>{{ (book.description | slice:0:150)+'..'}}</td>
         <td>{{ book.authors }}</td>
         <td>{{ book.publishedDate }}</td>
         <td>

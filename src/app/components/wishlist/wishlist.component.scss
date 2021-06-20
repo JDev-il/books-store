@@ -1,0 +1,13 @@
+.tableWrapper {
+    .p-datatable {
+        .p-datatable-tbody{
+            tr{
+                .desc{
+                    overflow: auto;
+                    border-width: 0;
+                    padding: 0;
+                }   
+            }
+        }
+    }   
+}
