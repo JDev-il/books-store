@@ -1,0 +1,53 @@
+<div class="search-page">
+  <search-bar (searchValue)="bookQuery($event)"></search-bar>
+  <block-ui>
+    <div class="cardsWrapper">
+        <div class="areBooksDiv" *ngIf="areBooks">
+          <h1>Oops! No books were found..</h1>
+        </div>
+        <div class="areBooksDiv" *ngIf="!areBooks">
+        <card
+          *ngFor="let book of books"
+        >
+          <p-card class="pCard" (click)="showDialog(book)">
+            <div class="left">
+              <div class="p-card-header">
+                <h1>{{ book?.title }}</h1>
+              </div>
+              <div class="p-card-content">
+                <p>
+                  {{
+                    !book?.description ? "" : (book?.description | slice: 0:150) + "..."
+                  }}
+                </p>
+                <div class="" *ngFor="let author of book?.authors">
+                  <p>{{ author }}</p>
+                </div>
+              </div>
+              <div class="p-card-footer">
+                <p>{{ book?.publishedDate }}</p>
+              </div>
+            </div>
+            <div class="right">
+              <img [src]="book.imageLinks?.smallThumbnail" alt="" />           
+            </div>
+          </p-card>
+      </card>
+    </div>
+  </div>
+  </block-ui>
+  <p-dialog [contentStyle]="contentStyle" [showHeader]="true" [keepInViewport]="true" [draggable]="false" [modal]="true" [(visible)]="display" class="pDialogWrapper">
+    <div class="header">
+      <h3>{{bookService.dialogBook?.title}}</h3>
+    </div>
+    <div class="content">
+      <p>
+        {{bookService.dialogBook?.description}}
+      </p>
+    </div>
+    <div>
+      <button pButton type="button" class="p-button-secondary" (click)="addToWishlist()" >Add Book To Wishlist</button>
+    </div>
+  </p-dialog>
+</div>
+

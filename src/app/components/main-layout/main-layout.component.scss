@@ -1,0 +1,27 @@
+section.main-wrapper {    
+    width: 100%;
+    height: 100%;
+    .title {
+        padding: 15px;
+        span{
+            padding: 15px 0;
+            margin: 0;
+            font-weight: 300;
+        }
+    }
+    .tabs {
+        ::ng-deep .p-tabview .p-tabview-nav{
+            border: 0;
+        }    
+        ::ng-deep .p-tabview-panels {
+            background: inherit;
+            padding: 0%;
+            .p-tabview-panel {
+               margin: 30px;
+            }
+        }
+    }
+
+
+}
+

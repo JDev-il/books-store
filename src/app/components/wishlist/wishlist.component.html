@@ -1,0 +1,38 @@
+<div class="tableWrapper">
+  <p-table
+    #dt
+    [value]="bookService.wishListBooks"
+    [rows]="bookService.wishListBooks.length"
+    [rowHover]="true"
+    dataKey="id"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="title">Title</th>
+        <th pSortableColumn="subtitle">Subtitle</th>
+        <th pSortableColumn="description">Description</th>
+        <th pSortableColumn="authors">Authors</th>
+        <th pSortableColumn="publishedDate">Published Date</th>
+        <th pSortableColumn="">Remove</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-book>
+      <tr>
+        <td>{{ book.title }}</td>
+        <td>{{ book.subtitle }}</td>
+        <td>{{ book.description }}</td>
+        <td>{{ book.authors }}</td>
+        <td>{{ book.publishedDate }}</td>
+        <td>
+          <button
+            pButton
+            pRipple
+            icon="pi pi-trash"
+            class="p-button-rounded p-button-warning"
+            (click)="removeBook(book)"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

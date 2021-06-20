@@ -1,0 +1,17 @@
+<section class="main-wrapper">
+    <div class="title">
+        <span>Welcome {{userService.details.username}}!</span>
+    </div>
+    <div class="tabs">
+        <p-tabView>
+            <p-tabPanel header="Search A Book">
+                <search 
+                class="search-wrapper"
+                ></search>
+            </p-tabPanel>
+            <p-tabPanel header="Books Wishlist">
+                <wishlist class="wishlist-wrapper"></wishlist>
+            </p-tabPanel>
+        </p-tabView>
+    </div>
+</section>

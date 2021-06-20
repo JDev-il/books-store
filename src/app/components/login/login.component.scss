@@ -1,0 +1,36 @@
+.loginWrapper {
+
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    
+    .formLogin{
+        width: 45%;
+        @media (max-width: 1280px){
+            width: 50%;
+        }
+        @media (min-width: 1280px){
+            width: 33.333%;
+        }
+        .p-formgroup {
+            display: flex;
+            flex-flow: column;
+            
+            :not(input){
+                justify-content: center;
+            }
+            input {
+                padding: 10px 0;
+                margin: 10px 0;
+                width: 100%;
+            }
+            button {
+                width: 50%;
+                margin: 15px auto;
+            }
+        }
+    }
+}

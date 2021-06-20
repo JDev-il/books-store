@@ -1,0 +1,17 @@
+<section class="loginWrapper">
+    <h1>Welcome To Book Shop!</h1>
+    <h3>Please sign in to continue:</h3>
+    <form class="formLogin" #login [formGroup]="formLogin">
+        <div class="p-formgroup">
+            <div class="p-field">
+                <label for="Username" class="p-sr-only">Username</label>
+                <input id="username" type="text" pInputText placeholder="Username" formControlName="username" (ngModelChange)="detectTyping()"> 
+            </div>
+            <div class="p-field">
+                <label for="password" class="p-sr-only">Password</label>
+                <input id="password" type="password" pInputText placeholder="Password" formControlName="password" (ngModelChange)="detectTyping()"> 
+            </div>
+            <button pButton type="button" label="Submit" [disabled]="!userService.userVerified" (click)="submitLogin()"></button>
+        </div>    
+    </form>
+</section>
