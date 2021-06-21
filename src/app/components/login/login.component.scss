@@ -6,7 +6,7 @@
     flex-flow: column;
     justify-content: center;
     align-items: center;
-    
+    position: absolute;
     .formLogin{
         width: 45%;
         @media (max-width: 1280px){

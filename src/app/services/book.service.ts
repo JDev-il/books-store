@@ -11,7 +11,7 @@ export interface User {username: string, password: string}
 
 /*=====  RxJS =====*/
 import { BehaviorSubject, Subject } from 'rxjs';
-import { debounceTime, map } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -46,26 +46,22 @@ export class BookService {
     this.searchQuery.next(value);
     this.LoadingSource.next(true);
     if(value.length <= 20 && value.length >= 1){
-      this.searchQuery$.pipe(debounceTime(450)).subscribe(val=>{
+      this.searchQuery$.pipe(filter(Boolean, this.receivedBooks), debounceTime(1000), distinctUntilChanged()).subscribe((val: string)=>{
         const updatedVal = val.trim().toLowerCase();
         const path = this.BookRoutes.booksApi
         .replace(':search', updatedVal)
-        this.httpApi.get(path).pipe(map((data:any)=>data.items)).subscribe((books: VolumeModel[])=>{ 
-          this.LoadingSource.next();
-          if(books.length){
-            return this.setBooks = books;
-          }
-        })                  
+          this.httpApi.get(path).pipe(map((data:any)=>data.items)).subscribe((books: VolumeModel[])=>{ 
+            if(books.length){
+              this.LoadingSource.next();
+              return this.setBooks = books;
+            }
+          })           
       })
-    } else {
-      return this.setBooks = []
     }
   } set setBooks(books: VolumeModel[]) {
-      if(books.length){
-        this.booksContainer = books
-        this.receivedBooks = books.map((b: any)=>{return{...b.volumeInfo}})
-      }
-      this.LoadingSource.next();
+    this.booksContainer = books
+    this.receivedBooks = books.map((b: any)=>{return{...b.volumeInfo}})
+    this.LoadingSource.next();
   } 
 
 }

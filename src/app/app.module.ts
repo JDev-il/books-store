@@ -30,6 +30,7 @@ import { SearchBarComponent } from './components/search/search-bar/search-bar.co
 import { DialogComponent } from './components/dialog/dialog.component';
 import { ButtonModule } from 'primeng/button';
 import {TableModule} from 'primeng/table';
+import { AlertsComponent } from './components/alerts/alerts.component';
 
 @NgModule({
   imports: [
@@ -58,6 +59,7 @@ import {TableModule} from 'primeng/table';
     WishlistComponent,
     SearchBarComponent,
     DialogComponent,
+    AlertsComponent,
   ],
   providers: [BookService, UserService],
   bootstrap: [AppComponent]

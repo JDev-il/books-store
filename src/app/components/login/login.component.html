@@ -11,7 +11,9 @@
                 <label for="password" class="p-sr-only">Password</label>
                 <input id="password" type="password" pInputText placeholder="Password" formControlName="password" (ngModelChange)="detectTyping()"> 
             </div>
-            <button pButton type="button" label="Submit" [disabled]="!userService.userVerified" (click)="submitLogin()"></button>
+            <button pButton type="button" label="Submit" (click)="submitLogin()"></button>
         </div>    
     </form>
 </section>
+<block-ui>
+</block-ui>

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { BookService } from 'src/app/services/book.service';
 import { BookModel } from 'src/app/shared/models/book.model';
+import { AlertsComponent } from '../alerts/alerts.component';
 
 @Component({
   selector: 'wishlist',
@@ -13,7 +14,7 @@ export class WishlistComponent implements OnInit {
   cols: any[];
   selectedBooks: BookModel[] = [];
 
-  constructor(public bookService: BookService) { }
+  constructor(public bookService: BookService, public alerts: AlertsComponent) { }
   
   ngOnInit(): void {
   }
@@ -24,6 +25,7 @@ export class WishlistComponent implements OnInit {
     if(findBookInArray){
       const index = this.bookService.wishListBooks.indexOf(findBookInArray)      
       this.bookService.wishListBooks.splice(index, 1)
+      this.alerts.wishlist();
     }
   }
 }
